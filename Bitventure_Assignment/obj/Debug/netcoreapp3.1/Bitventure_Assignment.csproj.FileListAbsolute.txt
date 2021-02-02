@@ -13,3 +13,4 @@ C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assign
 C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\obj\Debug\netcoreapp3.1\Bitventure_Assignment.pdb
 C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\obj\Debug\netcoreapp3.1\Bitventure_Assignment.genruntimeconfig.cache
 C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\bin\Debug\netcoreapp3.1\RestSharp.dll
+C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\obj\Debug\netcoreapp3.1\Bitventure_Assignment.csprojAssemblyReference.cache

@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 using System.Xml;
 using RestSharp;
+using System.Linq;
 
 namespace Bitventure_Assignment
 {
@@ -20,27 +21,34 @@ namespace Bitventure_Assignment
             var jsonFile = File.ReadAllText("bonus_endpoints.json");
             JSONServiceStructure.Root myJsonObject = JsonConvert.DeserializeObject<JSONServiceStructure.Root>(jsonFile);
 
+            //loop through each service
             foreach(JSONServiceStructure.Service service in myJsonObject.services)
             {
                 if (service.enabled)
                 {
+                    //loop through each endpoint
                     foreach(JSONServiceStructure.Endpoint endpoint in service.endpoints)
                     {
                         if (endpoint.enabled)
                         {
                             Console.WriteLine("Checking " + service.baseURL + endpoint.resource);
-                            string response = GetResponse(service.baseURL + endpoint.resource);
+
+                            //returns the response received from the endpoint using RestSharp
+                            //a 0 is added into the function as it enters a recursive loop, and should make it stop eventually
+                            string response = GetResponse(service.baseURL + endpoint.resource, 0);
                             if (!String.IsNullOrEmpty(response))
                             {
                                 Console.WriteLine("Valid response receieved:");
                                 Console.WriteLine(response);
                                 
+                                //void function that prints to terminal all the info about the received data from the endpoint
+                                //it uses identifiers defined for each service to check each element
                                 CheckResponse(response, endpoint.response, service.datatype, service.identifiers);
 
                             }
                             else
                             {
-                                Console.WriteLine("Error - Endpoint does not produce a valid JSON");
+                                Console.WriteLine("Error - Endpoint does not produce a valid response");
                             }
 
 
@@ -54,20 +62,26 @@ namespace Bitventure_Assignment
 
         }
 
-        static string GetResponse(string endPoint)
+        static string GetResponse(string endPoint, int recBreak)
         {
-            var client = new RestClient(endPoint);
-            client.Timeout = -1;
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("Content-Type", "*/*");
-            IRestResponse response = client.Execute(request);
+           IRestResponse response = null;
+            //only allow recursive function to execute twice
+            //once without a slash and once with a slash
+           if(recBreak < 2)
+           {
+                var client = new RestClient(endPoint);
+                client.Timeout = -1;
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("Content-Type", "*/*");
+                response = client.Execute(request);
 
-            if (String.IsNullOrEmpty(response.Content))
-            {
-                //Due to no trailing slash resulting in a 301 server error, this check needs to be done
-                string newEndpoint = endPoint + "/";
-                return GetResponse(newEndpoint);
-            }
+                if (String.IsNullOrEmpty(response.Content))
+                {
+                    //Due to no trailing slash resulting in a 301 server error, this check needs to be done
+                    string newEndpoint = endPoint + "/";
+                    return GetResponse(newEndpoint, recBreak += 1);
+                }
+           }
 
             return response.Content;
 
@@ -80,6 +94,7 @@ namespace Bitventure_Assignment
             {
                 Console.Write("Checking element: " + response.element);
 
+                //response valuetype could either be JSON or XML
                 if(dataType == "JSON")
                 {
                     var jsonObject = JToken.Parse(responseString);
@@ -139,9 +154,10 @@ namespace Bitventure_Assignment
             }
         }
 
-
+        //recursively add wildcards in order to search nested elements for the element i need to find
         static string FindJSONValueRecursive(JToken jsonObject, string valueToFind, int wildCards)
         {
+            //only allow searching up to 10 levels of nesting in the JSON object
             if(wildCards < 10)
             {
                 string wildCardString = "";
@@ -151,6 +167,7 @@ namespace Bitventure_Assignment
                 }
                 wildCardString += valueToFind;
 
+                //SelectToken can work by including as many "*." as deep as the element is in the object
                 var value = jsonObject.SelectToken(wildCardString)?.ToObject<string>();
                 if (value != null)
                 {
@@ -161,12 +178,11 @@ namespace Bitventure_Assignment
                 {
                     wildCards += 1;
                     return FindJSONValueRecursive(jsonObject, valueToFind, wildCards);
-                }
-
-               
+                }               
             }
             else
             {
+                //if the element does not exist within the first 10 levels of the object
                 return null;
             }
 
@@ -183,8 +199,6 @@ namespace Bitventure_Assignment
 
         static XmlDocument SerializeXML(string xml)
         {
-            if (String.IsNullOrEmpty(xml)) throw new NotSupportedException("Empty string!!");
-
             try
             {
                 XmlDocument xmlDoc = new XmlDocument();
@@ -192,21 +206,17 @@ namespace Bitventure_Assignment
                 return xmlDoc;
             }
             catch (Exception e)
-            {
+            { 
                 throw new Exception(e.Message);
             }
         }
 
         static string GetIdentifier(JSONServiceStructure.Identifier[] identifiers, string itemToIdentify)
         {
-            foreach(var item in identifiers)
-            {
-                if(item.key == itemToIdentify)
-                {
-                    return item.value;
-                }
-            }
-            return null;
+            //? operator to not allow value.ToString to execute if identifiers does not have the required key
+            string value = identifiers.ToList().Find(x => x.key == itemToIdentify)?.value.ToString();
+           
+            return value;
         }
 
 
