@@ -72,12 +72,11 @@ namespace Bitventure_Assignment
                 var client = new RestClient(endPoint);
                 client.Timeout = -1;
                 var request = new RestRequest(Method.GET);
-                request.AddHeader("Content-Type", "*/*");
                 response = client.Execute(request);
 
                 if (String.IsNullOrEmpty(response.Content))
                 {
-                    //Due to no trailing slash resulting in a 301 server error, this check needs to be done
+                    //Due to no trailing slash on endpoint resulting in a 301 server error, this check needs to be done
                     string newEndpoint = endPoint + "/";
                     return GetResponse(newEndpoint, recBreak += 1);
                 }
