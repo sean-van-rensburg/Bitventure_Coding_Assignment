@@ -1,0 +1,15 @@
+C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\bin\Debug\netcoreapp3.1\Bitventure_Assignment.exe
+C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\bin\Debug\netcoreapp3.1\Bitventure_Assignment.deps.json
+C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\bin\Debug\netcoreapp3.1\Bitventure_Assignment.runtimeconfig.json
+C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\bin\Debug\netcoreapp3.1\Bitventure_Assignment.runtimeconfig.dev.json
+C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\bin\Debug\netcoreapp3.1\Bitventure_Assignment.dll
+C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\bin\Debug\netcoreapp3.1\Bitventure_Assignment.pdb
+C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\obj\Debug\netcoreapp3.1\Bitventure_Assignment.AssemblyInfoInputs.cache
+C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\obj\Debug\netcoreapp3.1\Bitventure_Assignment.AssemblyInfo.cs
+C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\obj\Debug\netcoreapp3.1\Bitventure_Assignment.csproj.CoreCompileInputs.cache
+C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\obj\Debug\netcoreapp3.1\Bitventure_Assignment.csproj.CopyComplete
+C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\obj\Debug\netcoreapp3.1\Bitventure_Assignment.dll
+C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\obj\Debug\netcoreapp3.1\Bitventure_Assignment.pdb
+C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\obj\Debug\netcoreapp3.1\Bitventure_Assignment.genruntimeconfig.cache
+C:\Users\seani\Documents\C_Sharp_Testing\Bitventure_Assignment\Bitventure_Assignment\bin\Debug\netcoreapp3.1\RestSharp.dll

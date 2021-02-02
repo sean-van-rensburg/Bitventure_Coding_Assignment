@@ -1,0 +1,91 @@
+{
+  "services": [
+    {
+      "baseURL": "http://swapi.dev/api",
+      "datatype": "JSON",
+      "enabled": true,
+      "endpoints": [
+        {
+          "enabled": true,
+          "resource": "/people/1",
+          "response": [
+            {
+              "element": "name",
+              "identifier": "character.reference.001"
+            },
+            {
+              "element": "height",
+              "regex": "\\d"
+            }
+          ]
+        },
+        {
+          "enabled": true,
+          "resource": "/people/1",
+          "response": [
+            {
+              "element": "name",
+              "identifier": "director.reference.001"
+            }
+          ]
+        },
+        {
+          "enabled": true,
+          "resource": "/films/1",
+          "response": [
+            {
+              "element": "title",
+              "regex": "A New Hope"
+            },
+            {
+              "element": "director",
+              "identifier": "director.reference.001"
+            }
+          ]
+        }
+      ],
+      "identifiers": [
+        {
+          "key": "character.reference.001",
+          "value": "Luke Skywalker"
+        },
+        {
+          "key": "director.reference.001",
+          "value": "George Lucas"
+        }
+      ]
+    },
+    {
+      "baseURL": "http://www.geoplugin.net",
+      "datatype": "XML",
+      "enabled": true,
+      "endpoints": [
+        {
+          "enabled": true,
+          "resource": "/xml.gp?ip=105.184.92.37",          
+          "requestBody": "",
+          "response": [
+            {
+              "element": "geoplugin_request",
+              "identifier": "my.ip"
+            },
+            {
+              "element": "geoplugin_city",
+              "identifier": "my.city"
+            }
+          ]
+        }
+      ],
+      "identifiers": [
+        {
+          "key": "my.ip",
+          "value": "105.184.92.37"
+        },
+        {
+          "key": "my.ip",
+          "value": "Johannesburg"
+        }
+      ]
+    }
+  ]
+}

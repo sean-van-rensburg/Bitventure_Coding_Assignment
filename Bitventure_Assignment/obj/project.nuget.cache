@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "HXiKrA9mOyqpxYYnyrenKUUS/u+bWNfxkSHsXECAlOUdZk6GialitnxMbGQAblI5/3IGoLb24jqm9ecwcQqZ3Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\seani\\Documents\\C_Sharp_Testing\\Bitventure_Assignment\\Bitventure_Assignment\\Bitventure_Assignment.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\seani\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\seani\\.nuget\\packages\\restsharp\\106.11.7\\restsharp.106.11.7.nupkg.sha512"
+  ],
+  "logs": []
+}
